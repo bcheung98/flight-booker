@@ -1,7 +1,9 @@
+import "../css/Home.css"
+
 const Home = () => {
     return (
         <div>
-            Home Page
+            <img className="home-banner" src={require("../assets/airport1.jpg").default} alt="airport"/>
         </div>
     )
 }
