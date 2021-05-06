@@ -1,4 +1,19 @@
 .nav-bar {
     background-color: dodgerblue;
     height: 50px;
+    display: flex;
+}
+
+.logo {
+    font-size: 18pt;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-link {
+    width: 50px;
+    margin: auto;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
 }

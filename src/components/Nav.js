@@ -1,11 +1,20 @@
 import "../css/Nav.css";
 import { withRouter } from "react-router"
+import React from "react";
 
-const Nav = () => {
+const Nav = ({ logged_in, history }) => {
 
-    return(
+    return (
         <div className="nav-bar">
-            <h1 style={{margin: 0}}>YPedia</h1>
+            <div className="logo" onClick={() => history.push("/")}>YPedia</div>
+            {
+                !logged_in && (
+                    <>
+                        <div className="nav-link" onClick={() => history.push("/login")}>Login</div>
+                        <div className="nav-link" onClick={() => history.push("/signup")}>Signup</div>
+                    </>
+                )
+            }
         </div>
     )
 
