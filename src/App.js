@@ -25,6 +25,13 @@ class App extends React.Component {
         this.setState({ logged_in: true, token })
     }
 
+    componentDidMount() {
+        const authToken = localStorage.getItem('token')
+        if (authToken) {
+            this.setState({ logged_in: true, token: authToken })
+        }
+    }
+
     render() {
         return (
             <div>

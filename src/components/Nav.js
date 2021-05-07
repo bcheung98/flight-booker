@@ -1,6 +1,5 @@
 import "../css/Nav.css";
 import { withRouter } from "react-router"
-import React from "react";
 
 const Nav = ({ logged_in, history }) => {
 
@@ -12,6 +11,13 @@ const Nav = ({ logged_in, history }) => {
                     <>
                         <button className="nav-link" onClick={() => history.push("/login")}>Login</button>
                         <button className="nav-link" onClick={() => history.push("/signup")}>Signup</button>
+                    </>
+                )
+            }
+            {
+                logged_in && (
+                    <>
+                        <button className="nav-link" onClick={() => history.push("/logout")}>Logout</button>
                     </>
                 )
             }
