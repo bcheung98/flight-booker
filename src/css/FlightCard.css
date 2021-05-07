@@ -4,3 +4,55 @@
     margin: 50px;
     padding: 15px;
 }
+
+.popup-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+    background-color: rgb(32, 32, 32);
+    border: 2px solid white;
+    border-radius: 15px;
+    color: white;
+    width: 330px;
+    text-align: center;
+}
+
+.modal > .modal-header {
+    border-bottom: 1px solid gray;
+    font-size: 18px;
+    text-align: center;
+    padding: 5px;
+}
+
+.modal > .modal-content {
+    width: 100%;
+    padding: 10px 5px;
+}
+
+.modal > .modal-actions {
+    width: 100%;
+    padding: 10px 5px;
+    margin: auto;
+    text-align: center;
+}
+
+.modal > .modal-close {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    font-size: 24px;
+    background: red;
+    color: white;
+    border-radius: 18px;
+    border: 1px solid #cfcece;
+}
+
+.modal-button {
+    cursor: pointer;
+    margin: 15px;
+}
