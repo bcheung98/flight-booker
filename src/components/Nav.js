@@ -10,8 +10,8 @@ const Nav = ({ logged_in, history }) => {
             {
                 !logged_in && (
                     <>
-                        <div className="nav-link" onClick={() => history.push("/login")}>Login</div>
-                        <div className="nav-link" onClick={() => history.push("/signup")}>Signup</div>
+                        <button className="nav-link" onClick={() => history.push("/login")}>Login</button>
+                        <button className="nav-link" onClick={() => history.push("/signup")}>Signup</button>
                     </>
                 )
             }
