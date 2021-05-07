@@ -23,7 +23,7 @@ class Login extends React.Component {
         return (
             <div className="login-page">
                 <form onSubmit={this.handleSubmit} className="login-container">
-                    <h1>Log in to YPedia</h1>
+                    <h1>Login to YPedia</h1>
                     <div className="form-input-box">
                         <input type="text" name="username" className="form-input" placeholder="Username" />
                     </div>

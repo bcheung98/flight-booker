@@ -1,5 +1,5 @@
 .flight-browser-banner {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../assets/plane1.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../assets/plane2.jpg");
     height: 450px;
     background-position: center;
     background-repeat: no-repeat;
@@ -10,7 +10,7 @@
 .flight-browser-banner-text {
     text-align: center;
     position: absolute;
-    top: 50%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;

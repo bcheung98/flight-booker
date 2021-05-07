@@ -3,6 +3,7 @@
     background-image: linear-gradient(to right, red, blue); /* For Kai */
     height: 50px;
     display: flex;
+    border-bottom: 3px solid black;
 }
 
 .logo {
