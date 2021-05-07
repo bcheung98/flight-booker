@@ -4,6 +4,7 @@ import Nav from "./components/Nav";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import FlightBrowser from "./components/FlightBrowser"
 
 import "./App.css";
 import {
@@ -12,7 +13,6 @@ import {
     Redirect,
     Switch
 } from "react-router-dom";
-
 
 class App extends React.Component {
 
@@ -49,11 +49,15 @@ class App extends React.Component {
                             <Signup handleLogin={this.handleLogin} />
                         )} />
 
-                        <Route path='/logout' component={() => {
+                        <Route path="/logout" component={() => {
                             localStorage.clear()
                             this.setState({ logged_in: false, token: null })
                             return <Redirect to='/' />
                         }} />
+
+                        <Route path="/flights" component={() => (
+                            <FlightBrowser />
+                        )} />
 
                     </Switch>
                 </Router>

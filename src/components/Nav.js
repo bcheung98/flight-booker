@@ -21,6 +21,7 @@ const Nav = ({ logged_in, history }) => {
                     </>
                 )
             }
+            <button className="nav-link" onClick={() => history.push("/flights")}>Flights</button>
         </div>
     )
 
