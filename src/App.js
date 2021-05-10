@@ -36,7 +36,7 @@ class App extends React.Component {
         return (
             <div>
                 <Router>
-                    <Nav />
+                    <Nav logged_in={this.state.logged_in} />
                     <Switch>
 
                         <Route exact path="/" component={Home} />
@@ -56,7 +56,7 @@ class App extends React.Component {
                         }} />
 
                         <Route path="/flights" component={() => (
-                            <FlightBrowser />
+                            this.state.logged_in ? <FlightBrowser {...this.state} /> : <Redirect to="/login" />
                         )} />
 
                     </Switch>

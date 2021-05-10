@@ -17,7 +17,12 @@ class FlightBrowser extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:3000/flights")
+        fetch("http://localhost:3000/flights", {
+            method: "GET",
+            headers: {
+                "token": this.props.token
+            }
+        })
             .then(res => res.json())
             .then(flights => this.setState({ flights }));
     }

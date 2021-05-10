@@ -5,8 +5,8 @@ import { withRouter } from "react-router";
 class Login extends React.Component {
 
     state = {
-        username: '',
-        password: ''
+        username: "",
+        password: ""
     }
 
     handleInputChange = (e) => {
@@ -15,8 +15,26 @@ class Login extends React.Component {
         })
     }
 
-    handleSubmit = () => {
-        console.log("test");
+    handleSubmit = (e) => {
+        e.preventDefault();
+        fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ user: { ...this.state } })
+        })
+            .then(res => res.json())
+            .then(tokenObj => {
+                if (tokenObj.jwt) {
+                    localStorage.setItem("token", tokenObj.jwt);
+                    this.props.handleLogin(tokenObj.jwt);
+                    this.props.history.push("/")
+                }
+                else {
+                    alert("Login failed!");
+                }
+            });
     }
 
     render() {
@@ -25,10 +43,10 @@ class Login extends React.Component {
                 <form onSubmit={this.handleSubmit} className="login-container">
                     <h1>Login to YPedia</h1>
                     <div className="form-input-box">
-                        <input type="text" name="username" className="form-input" placeholder="Username" />
+                        <input type="text" name="username" className="form-input" placeholder="Username" onChange={this.handleInputChange} />
                     </div>
                     <div className="form-input-box">
-                        <input type="password" name="password" className="form-input" placeholder="Password" />
+                        <input type="password" name="password" className="form-input" placeholder="Password" onChange={this.handleInputChange} />
                     </div>
                     <button className="form-input-button" type="submit">Login</button>
                 </form>
