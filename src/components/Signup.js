@@ -31,6 +31,7 @@ class Signup extends React.Component {
             .then(tokenObj => {
                 if (tokenObj.jwt) {
                     localStorage.setItem("token", tokenObj.jwt);
+                    localStorage.setItem("username", tokenObj.user.username);
                     this.props.handleLogin(tokenObj.jwt);
                     this.props.history.push("/")
                 }

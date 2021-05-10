@@ -6,10 +6,13 @@
     border-bottom: 3px solid black;
 }
 
-.logo {
+.logo, .current-user {
     font-size: 18pt;
     font-weight: bold;
     color: white;
+}
+
+.logo {
     cursor: pointer;
 }
 
@@ -19,4 +22,8 @@
     margin-left: 50px;
     padding: 5px;
     cursor: pointer;
+}
+
+.current-user {
+    margin-left: 200px;
 }

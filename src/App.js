@@ -18,7 +18,7 @@ class App extends React.Component {
 
     state = {
         logged_in: false,
-        token: null
+        token: null,
     }
 
     handleLogin = (token) => {
@@ -42,17 +42,17 @@ class App extends React.Component {
                         <Route exact path="/" component={Home} />
 
                         <Route path="/login" component={() => (
-                            <Login handleLogin={this.handleLogin} />
+                            !this.state.logged_in ? <Login handleLogin={this.handleLogin} /> : <Redirect to="/" />
                         )} />
 
                         <Route path="/signup" component={() => (
-                            <Signup handleLogin={this.handleLogin} />
+                            !this.state.logged_in ? <Signup handleLogin={this.handleLogin} /> : <Redirect to="/" />
                         )} />
 
                         <Route path="/logout" component={() => {
                             localStorage.clear()
                             this.setState({ logged_in: false, token: null })
-                            return <Redirect to='/' />
+                            return <Redirect to="/" />
                         }} />
 
                         <Route path="/flights" component={() => (

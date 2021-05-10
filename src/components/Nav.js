@@ -18,10 +18,11 @@ const Nav = ({ logged_in, history }) => {
                 logged_in && (
                     <>
                         <button className="nav-link" onClick={() => history.push("/logout")}>Logout</button>
+                        <button className="nav-link" onClick={() => history.push("/flights")}>Flights</button>
+                        <span className="current-user">Logged in as: {localStorage.getItem("username")}</span>
                     </>
                 )
             }
-            <button className="nav-link" onClick={() => history.push("/flights")}>Flights</button>
         </div>
     )
 
