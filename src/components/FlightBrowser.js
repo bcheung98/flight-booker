@@ -28,7 +28,8 @@ class FlightBrowser extends React.Component {
             }
         })
             .then(res => res.json())
-            .then(flights => this.setState({ flights }));
+            .then(flights => this.setState({ flights }))
+            .catch(error => alert(error));
     }
 
     bookFlight = (flight, seatNumber) => {
@@ -42,7 +43,12 @@ class FlightBrowser extends React.Component {
             body: JSON.stringify({ flightData: flight })
         })
             .then(res => res.json())
-            .then(data => console.log(data));
+            .then(data => {
+                if (data.error !== undefined) {
+                    alert(data.error);
+                }
+            })
+            .catch(error => alert(error));
     }
 
     cancelBooking = (flight) => {
