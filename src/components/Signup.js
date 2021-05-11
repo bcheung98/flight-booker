@@ -9,7 +9,8 @@ class Signup extends React.Component {
         username: "",
         first_name: "",
         last_name: "",
-        password: ""
+        password: "",
+        password_confirm: ""
     }
 
     handleInputChange = (e) => {
@@ -47,16 +48,19 @@ class Signup extends React.Component {
                 <form onSubmit={this.handleSubmit} className="signup-container">
                     <h1>Create a YPedia account</h1>
                     <div className="form-input-box">
-                        <input type="text" name="username" className="form-input" placeholder="Username" onChange={this.handleInputChange} />
+                        <input type="text" name="username" className="form-input" placeholder="Username" onChange={this.handleInputChange} required />
                     </div>
                     <div className="form-input-box">
-                        <input type="text" name="first_name" className="form-input" placeholder="First Name" onChange={this.handleInputChange} />
+                        <input type="text" name="first_name" className="form-input" placeholder="First Name" onChange={this.handleInputChange} required />
                     </div>
                     <div className="form-input-box">
-                        <input type="text" name="last_name" className="form-input" placeholder="Last Name" onChange={this.handleInputChange} />
+                        <input type="text" name="last_name" className="form-input" placeholder="Last Name" onChange={this.handleInputChange} required />
                     </div>
                     <div className="form-input-box">
-                        <input type="password" name="password" className="form-input" placeholder="Password" onChange={this.handleInputChange} />
+                        <input type="password" name="password" className="form-input" placeholder="Password" onChange={this.handleInputChange} required />
+                    </div>
+                    <div className="form-input-box">
+                        <input type="password" name="password_confirm" className="form-input" placeholder="Confirm Password" onChange={this.handleInputChange} required />
                     </div>
                     <button className="form-input-button" type="submit">Signup</button>
                 </form>

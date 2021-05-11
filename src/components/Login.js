@@ -44,10 +44,10 @@ class Login extends React.Component {
                 <form onSubmit={this.handleSubmit} className="login-container">
                     <h1>Login to YPedia</h1>
                     <div className="form-input-box">
-                        <input type="text" name="username" className="form-input" placeholder="Username" onChange={this.handleInputChange} />
+                        <input type="text" name="username" className="form-input" placeholder="Username" onChange={this.handleInputChange} required />
                     </div>
                     <div className="form-input-box">
-                        <input type="password" name="password" className="form-input" placeholder="Password" onChange={this.handleInputChange} />
+                        <input type="password" name="password" className="form-input" placeholder="Password" onChange={this.handleInputChange} required />
                     </div>
                     <button className="form-input-button" type="submit">Login</button>
                 </form>
