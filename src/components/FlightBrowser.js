@@ -27,6 +27,10 @@ class FlightBrowser extends React.Component {
             .then(flights => this.setState({ flights }));
     }
 
+    bookFlight = (flight, seatNumber) => {
+        console.log(flight, seatNumber);
+    }
+
     getAirlines = () => {
         let airlines = [];
         for (let f of this.state.flights) {
@@ -85,7 +89,7 @@ class FlightBrowser extends React.Component {
                     airports={this.getAirports()} setOrigin={this.setOriginFilters} setDestination={this.setDestinationFilters}
                 />
                 <div className="flight-browser">
-                    {this.filterFlights().map(flight => <FlightCard key={flight.id} flightInfo={flight} />)}
+                    {this.filterFlights().map(flight => <FlightCard key={flight.id} flightInfo={flight} bookFlight={this.bookFlight} />)}
                 </div>
             </React.Fragment>
         )

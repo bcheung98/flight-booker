@@ -4,6 +4,16 @@ import Popup from "reactjs-popup";
 
 import "../css/FlightCard.css";
 
+const generateSeatNumbers = () => {
+    let seatNumbers = []
+    for (let i = 1; i <= 30; i++) {
+        for (let j = 65; j <= 70; j++) {
+            seatNumbers.push(`${i}${String.fromCharCode(j)}`);
+        }
+    }
+    return seatNumbers;
+}
+
 const FlightCard = (props) => {
     let { airline, flight_number, origin, destination } = props.flightInfo
     return (
@@ -26,10 +36,15 @@ const FlightCard = (props) => {
                             {airline} Flight {flight_number}
                             <br />
                             {origin} ==={">"} {destination}
+                            <br />
+                            Select Seat:
+                            <select className="seat-selector">
+                                {generateSeatNumbers().map(seat => <option key={seat} value={seat}>{seat}</option>)}
+                            </select>
                         </div>
                         <div className="modal-actions">
                             <button className="modal-button" onClick={() => {
-                                console.log("Flight booked!")
+                                props.bookFlight(props.flightInfo, document.querySelector(".seat-selector").value);
                                 close();
                             }}>Book Flight</button>
                             <button className="modal-button" onClick={() => close()}>Cancel</button>
