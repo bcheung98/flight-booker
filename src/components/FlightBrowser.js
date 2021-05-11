@@ -46,13 +46,12 @@ class FlightBrowser extends React.Component {
     }
 
     cancelBooking = (flight) => {
-        fetch("http://localhost:3000/bookings", {
+        fetch(`http://localhost:3000/bookings/${flight.id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
                 "token": this.props.token
-            },
-            body: JSON.stringify({ flight_id: flight.id })
+            }
         })
     }
 
