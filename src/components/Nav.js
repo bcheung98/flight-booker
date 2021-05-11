@@ -19,6 +19,7 @@ const Nav = ({ logged_in, history }) => {
                     <>
                         <button className="nav-link" onClick={() => history.push("/logout")}>Logout</button>
                         <button className="nav-link" onClick={() => history.push("/flights")}>Flights</button>
+                        <button className="nav-link" onClick={() => history.push("/bookings")}>My Bookings</button>
                         <span className="current-user">Logged in as: {localStorage.getItem("username")}</span>
                     </>
                 )

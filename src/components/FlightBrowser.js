@@ -2,12 +2,14 @@ import React from "react";
 import { withRouter } from "react-router"
 import FlightCard from "./FlightCard";
 import Filters from "./Filters";
+import BookingCard from "./BookingCard";
 
 import "../css/FlightBrowser.css";
 
 class FlightBrowser extends React.Component {
 
     state = {
+        path: window.location.pathname,
         flights: [],
         filters: {
             airlines: "all",
@@ -17,7 +19,9 @@ class FlightBrowser extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:3000/flights", {
+        let url = ""
+        this.state.path === "/flights" ? url = "http://localhost:3000/flights" : url = "http://localhost:3000/my-bookings"
+        fetch(url, {
             method: "GET",
             headers: {
                 "token": this.props.token
@@ -35,10 +39,21 @@ class FlightBrowser extends React.Component {
                 "Content-Type": "application/json",
                 "token": this.props.token
             },
-            body: JSON.stringify({flightData: flight})
+            body: JSON.stringify({ flightData: flight })
         })
             .then(res => res.json())
             .then(data => console.log(data));
+    }
+
+    cancelBooking = (flight) => {
+        fetch("http://localhost:3000/bookings", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "token": this.props.token
+            },
+            body: JSON.stringify({ flight_id: flight.id })
+        })
     }
 
     getAirlines = () => {
@@ -91,7 +106,7 @@ class FlightBrowser extends React.Component {
             <React.Fragment>
                 <div className="flight-browser-banner">
                     <div className="flight-browser-banner-text">
-                        <h1>Browse Flights</h1>
+                        {this.state.path === "/flights" ? <h1>Browse Flights</h1> : <h1>My Bookings</h1>}
                     </div>
                 </div>
                 <Filters
@@ -99,7 +114,11 @@ class FlightBrowser extends React.Component {
                     airports={this.getAirports()} setOrigin={this.setOriginFilters} setDestination={this.setDestinationFilters}
                 />
                 <div className="flight-browser">
-                    {this.filterFlights().map(flight => <FlightCard key={flight.id} flightInfo={flight} bookFlight={this.bookFlight} />)}
+                    {this.state.path === "/flights" ?
+                        this.filterFlights().map(flight => <FlightCard key={flight.id} flightInfo={flight} onClick={this.bookFlight} path={this.state.path} />)
+                        :
+                        this.filterFlights().map(flight => <BookingCard key={flight.id} flightInfo={flight} onClick={this.cancelBooking} path={this.state.path} />)
+                    }
                 </div>
             </React.Fragment>
         )

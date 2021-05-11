@@ -4,7 +4,7 @@ import Nav from "./components/Nav";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import FlightBrowser from "./components/FlightBrowser"
+import FlightBrowser from "./components/FlightBrowser";
 
 import "./App.css";
 import {
@@ -56,6 +56,10 @@ class App extends React.Component {
                         }} />
 
                         <Route path="/flights" component={() => (
+                            this.state.logged_in ? <FlightBrowser {...this.state} /> : <Redirect to="/login" />
+                        )} />
+
+                        <Route path="/bookings" component={() => (
                             this.state.logged_in ? <FlightBrowser {...this.state} /> : <Redirect to="/login" />
                         )} />
 

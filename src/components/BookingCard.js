@@ -2,26 +2,17 @@ import React from "react";
 import { withRouter } from "react-router";
 import Popup from "reactjs-popup";
 
-import "../css/FlightCard.css";
+import "../css/BookingCard.css";
 
-const generateSeatNumbers = () => {
-    let seatNumbers = []
-    for (let i = 1; i <= 30; i++) {
-        for (let j = 65; j <= 70; j++) {
-            seatNumbers.push(`${i}${String.fromCharCode(j)}`);
-        }
-    }
-    return seatNumbers;
-}
-
-const FlightCard = (props) => {
-    let { airline, flight_number, origin, destination } = props.flightInfo
+const BookingCard = (props) => {
+    let { airline, flight_number, origin, destination, seatNumber } = props.flightInfo
     return (
-        <div className="flight-card">
+        <div className="booking-card">
             <p>{airline} Flight {flight_number}</p>
             <p>{origin} ==={">"} {destination}</p>
+            <p>Seat Number: {seatNumber}</p>
             <Popup
-                trigger={<button className="add-flight-button">Book Flight</button>}
+                trigger={<button className="remove-booking-button">Cancel Booking</button>}
                 modal
                 nested
             >
@@ -30,23 +21,20 @@ const FlightCard = (props) => {
                         <button className="modal-close" onClick={close}>
                             &times;
                         </button>
-                        <div className="modal-header"> Confirm Booking </div>
+                        <div className="modal-header"> Cancel Booking </div>
                         <div className="modal-content">
                             {' '}
                             {airline} Flight {flight_number}
                             <br />
                             {origin} ==={">"} {destination}
                             <br />
-                            Select Seat:
-                            <select className="seat-selector">
-                                {generateSeatNumbers().map(seat => <option key={seat} value={seat}>{seat}</option>)}
-                            </select>
+                            Seat Number: {seatNumber}
                         </div>
                         <div className="modal-actions">
                             <button className="modal-button" onClick={() => {
-                                props.onClick(props.flightInfo, document.querySelector(".seat-selector").value);
+                                props.onClick(props.flightInfo);
                                 close();
-                            }}>Book Flight</button>
+                            }}>Cancel Booking</button>
                             <button className="modal-button" onClick={() => close()}>Go Back</button>
                         </div>
                     </div>
@@ -56,4 +44,4 @@ const FlightCard = (props) => {
     )
 }
 
-export default withRouter(FlightCard);
+export default withRouter(BookingCard);
