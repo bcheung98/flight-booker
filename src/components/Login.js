@@ -33,7 +33,7 @@ class Login extends React.Component {
                     this.props.history.push("/")
                 }
                 else {
-                    alert("Login failed!");
+                    alert(tokenObj.error);
                 }
             });
     }

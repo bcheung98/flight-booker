@@ -10,7 +10,7 @@ class Signup extends React.Component {
         first_name: "",
         last_name: "",
         password: "",
-        password_confirm: ""
+        password_confirmation: ""
     }
 
     handleInputChange = (e) => {
@@ -37,7 +37,7 @@ class Signup extends React.Component {
                     this.props.history.push("/")
                 }
                 else {
-                    alert("Login failed!");
+                    alert(tokenObj.error);
                 }
             });
     }
@@ -60,7 +60,7 @@ class Signup extends React.Component {
                         <input type="password" name="password" className="form-input" placeholder="Password" onChange={this.handleInputChange} required />
                     </div>
                     <div className="form-input-box">
-                        <input type="password" name="password_confirm" className="form-input" placeholder="Confirm Password" onChange={this.handleInputChange} required />
+                        <input type="password" name="password_confirmation" className="form-input" placeholder="Confirm Password" onChange={this.handleInputChange} required />
                     </div>
                     <button className="form-input-button" type="submit">Signup</button>
                 </form>
