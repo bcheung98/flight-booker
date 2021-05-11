@@ -29,7 +29,7 @@ class FlightBrowser extends React.Component {
 
     bookFlight = (flight, seatNumber) => {
         flight.seatNumber = seatNumber;
-        fetch("http://localhost:300/bookings", {
+        fetch("http://localhost:3000/bookings", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
