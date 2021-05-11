@@ -46,6 +46,7 @@ class FlightBrowser extends React.Component {
     }
 
     cancelBooking = (flight) => {
+        let newBookings = this.state.flights.filter(f => f.id !== flight.id)
         fetch(`http://localhost:3000/bookings/${flight.id}`, {
             method: "DELETE",
             headers: {
@@ -53,6 +54,7 @@ class FlightBrowser extends React.Component {
                 "token": this.props.token
             }
         })
+            .then(this.setState({ flights: newBookings }));
     }
 
     getAirlines = () => {
