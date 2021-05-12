@@ -1,6 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router";
-
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import "../css/Signup.css";
 
 class Signup extends React.Component {
@@ -46,23 +48,23 @@ class Signup extends React.Component {
         return (
             <div className="signup-page">
                 <form onSubmit={this.handleSubmit} className="signup-container">
-                    <h1>Create a YPedia account</h1>
+                    <Typography variant="h4">Create a YPedia account</Typography>
                     <div className="form-input-box">
-                        <input type="text" name="username" className="form-input" placeholder="Username" onChange={this.handleInputChange} required />
+                        <TextField type="text" name="username" className="form-input" placeholder="Username" onChange={this.handleInputChange} required />
                     </div>
                     <div className="form-input-box">
-                        <input type="text" name="first_name" className="form-input" placeholder="First Name" onChange={this.handleInputChange} required />
+                        <TextField type="text" name="first_name" className="form-input" placeholder="First Name" onChange={this.handleInputChange} required />
                     </div>
                     <div className="form-input-box">
-                        <input type="text" name="last_name" className="form-input" placeholder="Last Name" onChange={this.handleInputChange} required />
+                        <TextField type="text" name="last_name" className="form-input" placeholder="Last Name" onChange={this.handleInputChange} required />
                     </div>
                     <div className="form-input-box">
-                        <input type="password" name="password" className="form-input" placeholder="Password" onChange={this.handleInputChange} required />
+                        <TextField type="password" name="password" className="form-input" placeholder="Password" onChange={this.handleInputChange} required />
                     </div>
                     <div className="form-input-box">
-                        <input type="password" name="password_confirmation" className="form-input" placeholder="Confirm Password" onChange={this.handleInputChange} required />
+                        <TextField type="password" name="password_confirmation" className="form-input" placeholder="Confirm Password" onChange={this.handleInputChange} required />
                     </div>
-                    <button className="form-input-button" type="submit">Signup</button>
+                    <Button className="form-input-button" type="submit" variant="contained" color="primary">Signup</Button>
                 </form>
             </div>
         )

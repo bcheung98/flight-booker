@@ -1,29 +1,6 @@
 .nav-bar {
     background-color: dodgerblue;
-    background-image: linear-gradient(to right, red, blue); /* For Kai */
-    height: 50px;
+    background-image: linear-gradient(to right, red, blue);
     display: flex;
     border-bottom: 3px solid black;
-}
-
-.logo, .current-user {
-    font-size: 18pt;
-    font-weight: bold;
-    color: white;
-}
-
-.logo {
-    cursor: pointer;
-}
-
-.nav-link {
-    margin-top: 10.5px;
-    margin-bottom: 10.5px;
-    margin-left: 50px;
-    padding: 5px;
-    cursor: pointer;
-}
-
-.current-user {
-    margin-left: 200px;
 }
