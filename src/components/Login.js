@@ -1,6 +1,9 @@
 import React from "react";
 import "../css/Login.css";
 import { withRouter } from "react-router";
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 class Login extends React.Component {
 
@@ -42,14 +45,14 @@ class Login extends React.Component {
         return (
             <div className="login-page">
                 <form onSubmit={this.handleSubmit} className="login-container">
-                    <h1>Login to YPedia</h1>
+                    <Typography variant="h3">Login to YPedia</Typography>
                     <div className="form-input-box">
-                        <input type="text" name="username" className="form-input" placeholder="Username" onChange={this.handleInputChange} required />
+                        <TextField type="text" name="username" className="form-input" placeholder="Username" onChange={this.handleInputChange} required />
                     </div>
                     <div className="form-input-box">
-                        <input type="password" name="password" className="form-input" placeholder="Password" onChange={this.handleInputChange} required />
+                        <TextField type="password" name="password" className="form-input" placeholder="Password" onChange={this.handleInputChange} required />
                     </div>
-                    <button className="form-input-button" type="submit">Login</button>
+                    <Button className="form-input-button" type="submit" variant="contained" color="primary">Login</Button>
                 </form>
             </div>
         )

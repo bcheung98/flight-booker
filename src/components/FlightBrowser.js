@@ -6,6 +6,8 @@ import BookingCard from "./BookingCard";
 
 import "../css/FlightBrowser.css";
 
+import Typography from '@material-ui/core/Typography';
+
 class FlightBrowser extends React.Component {
 
     state = {
@@ -113,7 +115,7 @@ class FlightBrowser extends React.Component {
             <React.Fragment>
                 <div className="flight-browser-banner">
                     <div className="flight-browser-banner-text">
-                        {this.state.path === "/flights" ? <h1>Browse Flights</h1> : <h1>My Bookings</h1>}
+                        {this.state.path === "/flights" ? <Typography variant="h1">Browse Flights</Typography> : <Typography variant="h1">My Bookings</Typography>} 
                     </div>
                 </div>
                 <Filters
