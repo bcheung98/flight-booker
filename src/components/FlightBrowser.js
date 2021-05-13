@@ -3,6 +3,7 @@ import { withRouter } from "react-router"
 import FlightCard from "./FlightCard";
 import Filters from "./Filters";
 import BookingCard from "./BookingCard";
+import { airportList } from "../AirportList";
 
 import "../css/FlightBrowser.css";
 
@@ -14,9 +15,9 @@ class FlightBrowser extends React.Component {
         path: window.location.pathname,
         flights: [],
         filters: {
-            airlines: "all",
-            origins: "all",
-            destinations: "all"
+            airlines: "All Airlines",
+            origins: "All Airports",
+            destinations: "All Airports"
         }
     }
 
@@ -71,40 +72,42 @@ class FlightBrowser extends React.Component {
             !airlines.includes(f.airline) && airlines.push(f.airline);
         }
         airlines.sort((a, b) => a.localeCompare(b));
+        airlines.unshift("All Airlines")
         return airlines;
     }
 
     getAirports = () => {
         let airports = [];
         for (let f of this.state.flights) {
-            !airports.includes(f.origin) && airports.push(f.origin);
-            !airports.includes(f.destination) && airports.push(f.destination);
+            !airports.includes(`${airportList[f.origin]} (${f.origin})`) && airports.push(`${airportList[f.origin]} (${f.origin})`);
+            !airports.includes(`${airportList[f.destination]} (${f.destination})`) && airports.push(`${airportList[f.destination]} (${f.destination})`);
         }
         airports.sort((a, b) => a.localeCompare(b));
+        airports.unshift("All Airports")
         return airports;
     }
 
-    setAirlineFilters = (e) => {
-        this.setState({ filters: { ...this.state.filters, airlines: e.target.value } });
+    setAirlineFilters = (airline) => {
+        this.setState({ filters: { ...this.state.filters, airlines: airline } });
     }
 
-    setOriginFilters = (e) => {
-        this.setState({ filters: { ...this.state.filters, origins: e.target.value } });
+    setOriginFilters = (origin) => {
+        this.setState({ filters: { ...this.state.filters, origins: origin } });
     }
 
-    setDestinationFilters = (e) => {
-        this.setState({ filters: { ...this.state.filters, destinations: e.target.value } });
+    setDestinationFilters = (destination) => {
+        this.setState({ filters: { ...this.state.filters, destinations: destination } });
     }
 
     filterFlights = () => {
         let flights = [...this.state.flights]
-        if (this.state.filters.airlines !== "all") {
+        if (this.state.filters.airlines !== "All Airlines") {
             flights = flights.filter(f => this.state.filters.airlines === f.airline);
         }
-        if (this.state.filters.origins !== "all") {
+        if (this.state.filters.origins !== "All Airports") {
             flights = flights.filter(f => this.state.filters.origins === f.origin);
         }
-        if (this.state.filters.destinations !== "all") {
+        if (this.state.filters.destinations !== "All Airports") {
             flights = flights.filter(f => this.state.filters.destinations === f.destination);
         }
         return flights;

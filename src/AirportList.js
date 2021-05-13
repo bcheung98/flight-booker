@@ -1,4 +1,4 @@
-export const airports = {
+export const airportList = {
     "ABQ": "Albuquerque, NM",
     "ATL": "Atlanta, GA",
     "BOI": "Boise, ID",
@@ -9,7 +9,7 @@ export const airports = {
     "DTW": "Detroit, MI",
     "EWR": "Newark, NJ",
     "HNL": "Honolulu, HI",
-    "IAD": "Washington DC",
+    "IAD": "Washington, DC",
     "IAH": "Houston, TX",
     "JFK": "New York City, NY",
     "LAS": "Las Vegas, NV",

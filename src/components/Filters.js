@@ -1,52 +1,74 @@
 import React from "react";
 
 import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import { airports } from "../Airports";
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const useStyles = makeStyles((theme) => ({
-    formControl: {
-        margin: theme.spacing(3),
-        minWidth: 100,
-    },
-    selectEmpty: {
-        marginTop: theme.spacing(2),
-    },
     paper: {
         padding: theme.spacing(2),
         margin: 'auto',
-        maxWidth: 500,
+        maxWidth: 550,
     },
 }));
 
 const Filters = (props) => {
     const classes = useStyles();
+    const [airlineValue, setAirlineValue] = React.useState(props.airlines[0]);
+    const [airlineInputValue, setAirlineInputValue] = React.useState("");
+
+    const [originValue, setOriginValue] = React.useState(props.airports[0]);
+    const [originInputValue, setOriginInputValue] = React.useState("");
+
+    const [destinationValue, setDestinationValue] = React.useState(props.airports[0]);
+    const [destinationInputValue, setDestinationInputValue] = React.useState("");
     return (
         <div className={classes.paper}>
-            <FormControl className={classes.formControl}>
-                <InputLabel shrink>Origin</InputLabel>
-                <Select onChange={props.setOrigin} className={classes.selectEmpty} autoWidth>
-                    <MenuItem value="all">All Airports</MenuItem>
-                    {props.airports.map(airport => <MenuItem key={airport} value={airport}>{airports[airport]} ({airport})</MenuItem>)}
-                </Select>
-            </FormControl>
-            <FormControl className={classes.formControl}>
-                <InputLabel shrink>Destination</InputLabel>
-                <Select onChange={props.setDestination} className={classes.selectEmpty} autoWidth>
-                    <MenuItem value="all">All Airports</MenuItem>
-                    {props.airports.map(airport => <MenuItem key={airport} value={airport}>{airports[airport]} ({airport})</MenuItem>)}
-                </Select>
-            </FormControl>
-            <FormControl className={classes.formControl}>
-                <InputLabel shrink>Airline</InputLabel>
-                <Select onChange={props.setAirline} className={classes.selectEmpty} autoWidth>
-                    <MenuItem value="all">All Airlines</MenuItem>
-                    {props.airlines.map(airline => <MenuItem key={airline} value={airline}>{airline}</MenuItem>)}
-                </Select>
-            </FormControl>
+            <Autocomplete
+                style={{ margin: "20px" }}
+                value={originValue}
+                onChange={(event, newValue) => {
+                    setOriginValue(newValue);
+                    props.setOrigin(newValue);
+                }}
+                inputValue={originInputValue}
+                onInputChange={(event, newInputValue) => {
+                    setOriginInputValue(newInputValue);
+                }}
+                options={props.airports}
+                getOptionLabel={(option) => option}
+                renderInput={(params) => <TextField {...params} label="Origin" variant="outlined" />}
+            />
+            <Autocomplete
+                style={{ margin: "20px" }}
+                value={destinationValue}
+                onChange={(event, newValue) => {
+                    setDestinationValue(newValue);
+                    props.setDestination(newValue);
+                }}
+                inputValue={destinationInputValue}
+                onInputChange={(event, newInputValue) => {
+                    setDestinationInputValue(newInputValue);
+                }}
+                options={props.airports}
+                getOptionLabel={(option) => option}
+                renderInput={(params) => <TextField {...params} label="Destination" variant="outlined" />}
+            />
+            <Autocomplete
+                style={{ margin: "20px" }}
+                value={airlineValue}
+                onChange={(event, newValue) => {
+                    setAirlineValue(newValue);
+                    props.setAirline(newValue);
+                }}
+                inputValue={airlineInputValue}
+                onInputChange={(event, newInputValue) => {
+                    setAirlineInputValue(newInputValue);
+                }}
+                options={props.airlines}
+                getOptionLabel={(option) => option}
+                renderInput={(params) => <TextField {...params} label="Airline" variant="outlined" />}
+            />
         </div>
     )
 }
