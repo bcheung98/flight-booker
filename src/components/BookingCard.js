@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router";
 import Popup from "reactjs-popup";
+import { airportList, airlineList } from "../Data";
 
 import "../css/BookingCard.css";
 
@@ -9,7 +10,6 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import ButtonBase from '@material-ui/core/ButtonBase';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -51,22 +51,25 @@ const BookingCard = (props) => {
         <div className={classes.root}>
             <Paper className={classes.paper}>
                 <Grid container spacing={2}>
-                    {/* <Grid item>
-                        <img className={classes.img} alt="complex" src="/static/images/grid/complex.jpg" />
-                    </Grid> */}
+                    <Grid item>
+                        <img className={classes.img} alt={airline} src={`https://e1.flightcdn.com/images/airline_logos/90p/${airlineList[airline]}.png`} />
+                    </Grid>
                     <Grid item xs={12} sm container>
                         <Grid item xs container direction="column" spacing={2}>
                             <Grid item xs>
                                 <Typography gutterBottom variant="subtitle1">
                                     {airline} Flight {flight_number}
                                 </Typography>
-                                <Typography variant="body2" gutterBottom>
-                                    {origin} ==={">"} {destination}
+                                <Typography gutterBottom variant="body2">
+                                    <b>{origin}</b> ==={">"} <b>{destination}</b>
                                 </Typography>
-                                <Typography variant="body2" color="textSecondary">
-                                    Departs: <b>{departure_time}</b> Arrives: <b>{arrival_time}</b>
+                                <Typography variant="body2">
+                                    Departs: <b>{departure_time}</b>
                                 </Typography>
-                                <Typography variant="body2" color="textSecondary">
+                                <Typography variant="body2">
+                                    Arrives: <b>{arrival_time}</b>
+                                </Typography>
+                                <Typography variant="body2">
                                     Seat Number: <b>{seatNumber}</b>
                                 </Typography>
                             </Grid>
@@ -80,7 +83,7 @@ const BookingCard = (props) => {
                                         <Paper className={classes.paper}>
                                             <Typography variant="h4">Cancel Flight</Typography>
                                             <Typography variant="body1">{airline} Flight {flight_number}</Typography>
-                                            <Typography variant="body1">{origin} ==={">"} {destination}</Typography>
+                                            <Typography variant="body1">{`${airportList[origin]} (${origin})`} ==={">"} {`${airportList[destination]} (${destination})`}</Typography>
                                             <Typography variant="body1">Departs: <b>{departure_time}</b></Typography>
                                             <Typography variant="body1">Arrives: <b>{arrival_time}</b></Typography>
                                             <Typography variant="body1">Aircraft: {aircraft}</Typography>
@@ -97,9 +100,9 @@ const BookingCard = (props) => {
                                 </Popup>
                             </Grid>
                         </Grid>
-                        {/* <Grid item>
-                            <Typography variant="subtitle1">$19.00</Typography>
-                        </Grid> */}
+                        <Grid item>
+                            <Typography variant="subtitle1">{aircraft}</Typography>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Paper>

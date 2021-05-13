@@ -8,7 +8,9 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         padding: theme.spacing(2),
         margin: 'auto',
-        maxWidth: 550,
+        maxWidth: 1250,
+        display: "grid",
+        gridTemplateColumns: "auto auto auto"
     },
 }));
 

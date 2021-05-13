@@ -28,3 +28,23 @@ export const airportList = {
     "SLC": "Salt Lake City, UT",
     "TUS": "Tucson, AZ"
 }
+
+export const airlineList = {
+    "Alaska Airlines": "ASA",
+    "American Airlines": "AAL",
+    "CommutAir": "UCA",
+    "Delta": "DAL",
+    "Envoy Air": "ENY",
+    "Frontier": "FFT",
+    "Hawaiian Airlines": "HAL",
+    "Horizon": "ASA",
+    "JetBlue": "JBU",
+    "Mesa": "ASH",
+    "PSA Airlines": "JIA",
+    "Republic": "RPA",
+    "SkyWest": "SKW",
+    "Southwest": "SWA",
+    "Spirit": "NKS",
+    "Sun Country Airlines": "SCX",
+    "United": "UAL"
+}

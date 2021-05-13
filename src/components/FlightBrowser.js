@@ -3,7 +3,7 @@ import { withRouter } from "react-router"
 import FlightCard from "./FlightCard";
 import Filters from "./Filters";
 import BookingCard from "./BookingCard";
-import { airportList } from "../AirportList";
+import { airportList } from "../Data";
 
 import "../css/FlightBrowser.css";
 
@@ -92,10 +92,18 @@ class FlightBrowser extends React.Component {
     }
 
     setOriginFilters = (origin) => {
+        if (origin !== null && origin !== "All Airports") {
+            origin = origin.split(" ")
+            origin = origin[origin.length - 1].substr(1, 3);
+        }
         this.setState({ filters: { ...this.state.filters, origins: origin } });
     }
 
     setDestinationFilters = (destination) => {
+        if (destination !== null && destination !== "All Airports") {
+            destination = destination.split(" ")
+            destination = destination[destination.length - 1].substr(1, 3);
+        }
         this.setState({ filters: { ...this.state.filters, destinations: destination } });
     }
 
@@ -118,7 +126,7 @@ class FlightBrowser extends React.Component {
             <React.Fragment>
                 <div className="flight-browser-banner">
                     <div className="flight-browser-banner-text">
-                        {this.state.path === "/flights" ? <Typography variant="h1">Browse Flights</Typography> : <Typography variant="h1">My Bookings</Typography>} 
+                        {this.state.path === "/flights" ? <Typography variant="h1">Browse Flights</Typography> : <Typography variant="h1">My Bookings</Typography>}
                     </div>
                 </div>
                 <Filters
