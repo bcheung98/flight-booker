@@ -5,6 +5,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { airports } from "../Airports";
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -29,14 +30,14 @@ const Filters = (props) => {
                 <InputLabel shrink>Origin</InputLabel>
                 <Select onChange={props.setOrigin} className={classes.selectEmpty} autoWidth>
                     <MenuItem value="all">All Airports</MenuItem>
-                    {props.airports.map(airport => <MenuItem key={airport} value={airport}>{airport}</MenuItem>)}
+                    {props.airports.map(airport => <MenuItem key={airport} value={airport}>{airports[airport]} ({airport})</MenuItem>)}
                 </Select>
             </FormControl>
             <FormControl className={classes.formControl}>
                 <InputLabel shrink>Destination</InputLabel>
                 <Select onChange={props.setDestination} className={classes.selectEmpty} autoWidth>
                     <MenuItem value="all">All Airports</MenuItem>
-                    {props.airports.map(airport => <MenuItem key={airport} value={airport}>{airport}</MenuItem>)}
+                    {props.airports.map(airport => <MenuItem key={airport} value={airport}>{airports[airport]} ({airport})</MenuItem>)}
                 </Select>
             </FormControl>
             <FormControl className={classes.formControl}>
