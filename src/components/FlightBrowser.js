@@ -88,11 +88,17 @@ class FlightBrowser extends React.Component {
     }
 
     setAirlineFilters = (airline) => {
+        if (airline === null) {
+            airline = "All Airlines";
+        }
         this.setState({ filters: { ...this.state.filters, airlines: airline } });
     }
 
     setOriginFilters = (origin) => {
-        if (origin !== null && origin !== "All Airports") {
+        if (origin === null) {
+            origin = "All Airports";
+        }
+        if (origin !== "All Airports") {
             origin = origin.split(" ")
             origin = origin[origin.length - 1].substr(1, 3);
         }
@@ -100,7 +106,10 @@ class FlightBrowser extends React.Component {
     }
 
     setDestinationFilters = (destination) => {
-        if (destination !== null && destination !== "All Airports") {
+        if (destination === null) {
+            destination = "All Airports";
+        }
+        if (destination !== "All Airports") {
             destination = destination.split(" ")
             destination = destination[destination.length - 1].substr(1, 3);
         }
