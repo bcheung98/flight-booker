@@ -11,16 +11,6 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
-const generateSeatNumbers = () => {
-    let seatNumbers = []
-    for (let i = 1; i <= 30; i++) {
-        for (let j = 65; j <= 70; j++) {
-            seatNumbers.push(`${i}${String.fromCharCode(j)}`);
-        }
-    }
-    return seatNumbers;
-}
-
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -56,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 
 const FlightCard = (props) => {
     const classes = useStyles();
-    let { airline, flight_number, origin, departure_time, destination, arrival_time, aircraft } = props.flightInfo
+    let { airline, flight_number, origin, departure_time, destination, arrival_time, aircraft, available_seats} = props.flightInfo
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
@@ -96,7 +86,7 @@ const FlightCard = (props) => {
                                             <Typography variant="body1">Aircraft: {aircraft}</Typography>
                                             <Typography variant="body1">Select Seat:
                                                 <select className="seat-selector" required>
-                                                    {generateSeatNumbers().map(seat => <option key={seat} value={seat}>{seat}</option>)}
+                                                    {available_seats.map(seat => <option key={seat} value={seat}>{seat}</option>)}
                                                 </select>
                                             </Typography>
                                             <div className="modal-actions">
