@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 
 const FlightCard = (props) => {
     const classes = useStyles();
-    let { airline, flight_number, origin, departure_time, destination, arrival_time, aircraft, available_seats} = props.flightInfo
+    let { airline, flight_number, origin, departure_time, destination, arrival_time, aircraft, available_seats } = props.flightInfo
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
